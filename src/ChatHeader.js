@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 function ChatHeader(props){
   return(
     <div className='chat-header'>
@@ -7,4 +8,8 @@ function ChatHeader(props){
   )
 }
 
-export default ChatHeader
+const mapStateToProps = (state)=>{
+  return {msgcount:state.msgcount}
+}
+
+export default connect(mapStateToProps)(ChatHeader)

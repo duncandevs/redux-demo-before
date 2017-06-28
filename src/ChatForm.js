@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-export default class ChatForm extends Component{
+import { connect } from 'react-redux'
+class ChatForm extends Component{
   constructor(){
     super()
     this.state = {
@@ -33,5 +34,15 @@ export default class ChatForm extends Component{
       </div>
     )
   }
-
 }
+
+
+
+const mapDispatchToProps = (dispatch)=>{
+  return {
+    addNewMessage: (message)=>dispatch({type:'ADD_NEW_MESSAGE',payload:message}),
+    incrementMsgCount: ()=>dispatch({type:'INCREMENT_MSG_COUNT'})
+   }
+}
+
+export default connect(state=>state,mapDispatchToProps)(ChatForm)
